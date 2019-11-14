@@ -15,9 +15,11 @@ class QuoteList extends StatefulWidget {
 class _QuoteListState extends State<QuoteList> {
 
   List<Quote> quotes =[
-  Quote(text:'In all you do, try as much as possible to have fun', author:'Tomi'),
-  Quote(text:'In all you do, try as much as possible to have fun', author:'Tomi'),
-  Quote(text:'In all you do, try as much as possible to have fun', author:'Tomi'),
+    Quote(text:'In all you do, try as much as possible to have fun', author:'Tomi'),
+    Quote(text:'In all you do, try as much as possible to have fun', author:'Tomi'),
+    Quote(text:'In all you do, try as much as possible to have fun', author:'Tomi'),
+
+
 
   ];
 
@@ -32,7 +34,14 @@ class _QuoteListState extends State<QuoteList> {
         backgroundColor: Colors.blue[500],
       ),
       body: Column(
-        children: quotes.map((quote) =>  QuoteCard(quote: quote)).toList(),
+        children: quotes.map((quote) =>  QuoteCard(
+            quote: quote,
+            delete: (){
+              setState(() {
+                quotes.remove(quote);
+              });
+            }
+         )).toList(),
       )
     );
   }
